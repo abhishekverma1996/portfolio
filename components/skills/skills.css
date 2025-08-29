@@ -1,0 +1,294 @@
+.skills {
+  background: linear-gradient(135deg, 
+    var(--neutral-50) 0%, 
+    var(--primary-50) 50%, 
+    var(--neutral-50) 100%);
+  padding: var(--space-20) 0;
+}
+
+[data-theme="dark"] .skills {
+  background: linear-gradient(135deg, 
+    var(--neutral-900) 0%, 
+    var(--primary-900) 50%, 
+    var(--neutral-900) 100%);
+}
+
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.skills__content {
+  background: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills__content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-normal);
+}
+
+.skills__content:hover::before {
+  transform: scaleX(1);
+}
+
+.skills__content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.skills__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--title-color);
+  margin-bottom: var(--space-6);
+  text-align: center;
+  position: relative;
+}
+
+.skills__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
+  border-radius: var(--radius-full);
+}
+
+.skills__box {
+  margin-top: var(--space-6);
+}
+
+.skills__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skills__data {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: rgba(99, 102, 241, 0.05);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .skills__data {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.skills__data::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.skills__data:hover::before {
+  left: 100%;
+}
+
+.skills__data:hover {
+  transform: translateX(8px);
+  background: rgba(99, 102, 241, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .skills__data:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.skills__data i,
+.skills__icon {
+  font-size: var(--text-2xl);
+  color: var(--primary-600);
+  min-width: 32px;
+  text-align: center;
+  transition: transform var(--transition-fast);
+}
+
+.skills__data:hover i,
+.skills__data:hover .skills__icon {
+  transform: scale(1.2);
+}
+
+.skills__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills__info {
+  flex: 1;
+}
+
+.skills__name {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--title-color);
+  margin-bottom: var(--space-1);
+}
+
+.skills__level {
+  font-size: var(--text-sm);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+  padding: var(--space-1) var(--space-3);
+  background: var(--primary-100);
+  color: var(--primary-700);
+  border-radius: var(--radius-full);
+  display: inline-block;
+}
+
+[data-theme="dark"] .skills__level {
+  background: var(--primary-900);
+  color: var(--primary-300);
+}
+
+/* Skill Level Indicators */
+.skills__level.advanced {
+  background: var(--success);
+  color: white;
+}
+
+.skills__level.intermediate {
+  background: var(--warning);
+  color: white;
+}
+
+.skills__level.basic {
+  background: var(--info);
+  color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .skills__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .skills__content {
+    padding: var(--space-6);
+  }
+
+  .skills__title {
+    font-size: var(--text-lg);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .skills {
+    padding: var(--space-16) 0;
+  }
+
+  .skills__container {
+    margin-top: var(--space-8);
+  }
+
+  .skills__content {
+    padding: var(--space-5);
+  }
+
+  .skills__data {
+    padding: var(--space-3);
+  }
+
+  .skills__data i {
+    font-size: var(--text-xl);
+    min-width: 28px;
+  }
+}
+
+/* Animation Classes */
+.skills__content {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.skills__content:nth-child(1) { animation-delay: 0.1s; }
+.skills__content:nth-child(2) { animation-delay: 0.2s; }
+.skills__content:nth-child(3) { animation-delay: 0.3s; }
+.skills__content:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effects */
+.skills__content:hover .skills__title::after {
+  width: 60px;
+}
+
+.skills__data:hover .skills__level {
+  transform: scale(1.05);
+}
+
+/* Skill Progress Bars (Optional Enhancement) */
+.skills__progress {
+  width: 100%;
+  height: 6px;
+  background: var(--neutral-200);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-2);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .skills__progress {
+  background: var(--neutral-700);
+}
+
+.skills__progress-bar {
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-600), var(--accent-500));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+  position: relative;
+}
+
+.skills__progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
